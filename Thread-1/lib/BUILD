@@ -98,3 +98,32 @@ cc_test(
 	  ":model_lib",
       ],
 )
+
+cc_library(
+    name = "recommend_lib",
+    srcs = [
+        "recommend_system.cc",
+        ],
+    hdrs = [
+        "recommend_system.h",
+        ],
+    deps = [
+        ":embedding_lib",
+        ":utils_lib",
+        ":model_lib",
+        ":instruction_lib"
+    ],
+	visibility = [
+		"//visibility:public",
+	],
+)
+
+cc_test(
+    name = "recommend_lib_test",
+    size = "small",
+    srcs = ["recommend_system_test.cc"],
+    deps = [
+        "@gtest//:gtest_main",
+	    ":recommend_lib",
+        ],
+)

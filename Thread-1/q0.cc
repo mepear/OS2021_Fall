@@ -42,7 +42,6 @@ void run_one_instruction(Instruction inst, EmbeddingHolder* users, EmbeddingHold
             Embedding* item = items->get_embedding(item_idx);
             EmbeddingGradient* gradient = calc_gradient(user, item, label);
             users->update_embedding(user_idx, gradient, 0.01);
-            delete gradient;
             gradient = calc_gradient(item, user, label);
             items->update_embedding(item_idx, gradient, 0.001);
             delete gradient;
@@ -90,3 +89,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
