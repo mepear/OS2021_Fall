@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Write the result
-    users->write_to_stdout();
-    items->write_to_stdout();
+    // users->write_to_stdout();
+    // items->write_to_stdout();
     return 0;
 }

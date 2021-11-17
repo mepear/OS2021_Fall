@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <chrono>  // for AutoTimer function
+#include <mutex>
 
 // For colored outputs in terminal
 #define RST  "\x1B[0m"
@@ -26,6 +27,13 @@
 
 #define BOLD(x) "\x1B[1m" x RST
 #define UNDL(x) "\x1B[4m" x RST
+
+struct mutex_wrapper : std::mutex
+{
+  mutex_wrapper() = default;
+  mutex_wrapper(mutex_wrapper const&) noexcept : std::mutex() {}
+  bool operator==(mutex_wrapper const&other) noexcept { return this==&other; }
+};
 
 namespace proj1 {
 
