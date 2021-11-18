@@ -76,4 +76,18 @@ void recommend_system(Instruction inst, EmbeddingHolder* users, EmbeddingHolder*
     return;
 }
 
+void recommend_system_outplace(Instruction inst, EmbeddingHolder* users_copy, EmbeddingHolder* items_copy){
+    int user_idx = inst.payloads[0];
+    Embedding* user = users_copy->get_embedding(user_idx);
+    std::vector<Embedding*> item_pool;
+    int iter_idx = inst.payloads[1];
+    for (unsigned int i = 2; i < inst.payloads.size(); ++i) {
+        int item_idx = inst.payloads[i];
+        item_pool.push_back(items_copy->get_embedding(item_idx));
+    }
+    Embedding* recommendation = recommend(user, item_pool);
+    recommendation->write_to_stdout();
+    return;
+}
+
 } // namespace proj1

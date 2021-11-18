@@ -44,10 +44,12 @@ using EmbeddingGradient = Embedding;
 
 class EmbeddingHolder{
 public:
+    EmbeddingHolder();
     EmbeddingHolder(std::string filename);
     EmbeddingHolder(EmbeddingMatrix &data);
     ~EmbeddingHolder();
     static EmbeddingMatrix read(std::string);
+    EmbeddingHolder* deep_copy();
     void write_to_stdout();
     void write(std::string filename);
     int append(Embedding *data);

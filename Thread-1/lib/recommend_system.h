@@ -25,6 +25,8 @@ void update(Instruction inst, EmbeddingHolder* users, EmbeddingHolder* items, st
 
 void recommend_system(Instruction inst, EmbeddingHolder* users, EmbeddingHolder* items);
 
+void recommend_system_outplace(Instruction inst, EmbeddingHolder* users, EmbeddingHolder* items);
+
 
 } // namespace proj1
 

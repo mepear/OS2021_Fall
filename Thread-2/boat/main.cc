@@ -14,6 +14,8 @@ int main(int argc, char *argv[]){
 	proj2::BoatGrader* bg = new proj2::BoatGrader(adults,children); 
 	proj2::Boat* boat = new proj2::Boat();
 	boat->begin(adults,children, bg);
+
+	// Then test the correctness
 	int k = bg->childrenLeft();
 	bg->boatAssert(k == 0, "Left children on oahu", proj2::WRONG_ANSWER);
 	int l = bg->adultsLeft();

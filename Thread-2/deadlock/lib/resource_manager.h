@@ -4,6 +4,7 @@
 #include <map>
 #include <mutex>
 #include <thread>
+#include <vector>
 #include <condition_variable>
 #include "thread_manager.h"
 
@@ -23,10 +24,20 @@ public:
     void budget_claim(std::map<RESOURCE, int> budget);
     int request(RESOURCE, int amount);
     void release(RESOURCE, int amount);
+    int banker(std::map<RESOURCE, int> resource_amount_now, 
+               std::map<std::thread::id, std::map<RESOURCE, int>> resource_allocation_now, 
+               std::map<std::thread::id, std::map<RESOURCE, int>> resource_need_now,
+               std::vector<std::thread::id> thread_now);
+    void print_resource();
 private:
+    std::vector<std::thread::id> current_thread;
+    std::mutex data_lock;
+    std::map<std::thread::id, std::map<RESOURCE, int>> resource_max;
+    std::map<std::thread::id, std::map<RESOURCE, int>> resource_allocation;
+    std::map<std::thread::id, std::map<RESOURCE, int>> resource_need;
     std::map<RESOURCE, int> resource_amount;
-    std::map<RESOURCE, std::mutex> resource_mutex;
-    std::map<RESOURCE, std::condition_variable> resource_cv;
+    std::mutex banker_lock;
+    std::condition_variable banker_cv;
     ThreadManager *tmgr;
 };
 

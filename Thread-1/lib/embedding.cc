@@ -142,6 +142,18 @@ bool Embedding::operator==(const Embedding &another) {
     return true;
 }
 
+EmbeddingHolder::EmbeddingHolder(){
+}
+
+EmbeddingHolder* EmbeddingHolder::deep_copy(){
+    EmbeddingHolder* eh_copy = new EmbeddingHolder();
+    for (unsigned int i = 0; i < get_n_embeddings(); ++i) {
+        proj1::Embedding* temp = new proj1::Embedding(get_embedding(i)); 
+        eh_copy->append(temp);
+    }
+    return eh_copy;
+}
+
 EmbeddingHolder::EmbeddingHolder(std::string filename) {
     this->emb_matx = this->read(filename);
 }
@@ -176,6 +188,7 @@ EmbeddingMatrix EmbeddingHolder::read(std::string filename) {
 int EmbeddingHolder::append(Embedding* data) {
     int indx = this->emb_matx.size();
     embbedingAssert(
+        this->emb_matx.size() == 0 ||
         data->get_length() == this->emb_matx[0]->get_length(),
         "Embedding to append has a different length!", LEN_MISMATCH
     );
