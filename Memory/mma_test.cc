@@ -18,7 +18,7 @@ class MMATest : public ::testing::Test {
     workload_sz_4 = 2000;
     metrix_length = 10;
     loop_times = 100;
-    thread_num = 10;
+    thread_num = 20;
     //metrix = std::vector<std::vector<int>>(metrix_length, std::vector<int>(metrix_length, 0));
   }
   void TearDown() override {delete mma;}
@@ -54,18 +54,18 @@ TEST_F(MMATest,task1){
 }
 
 TEST_F(MMATest,task2){
-	std::vector<proj3::ArrayList*>arr;
-    for(int i = 0; i<loop_times; i++){
-        arr.push_back(mma->Allocate(workload_sz_2));
-        for(unsigned long j = 0; j < workload_sz_2; j++)arr[i]->Write(j, i);
-    }
-    for(int i = 0; i<loop_times; i++){
-        if(i %2)mma->Release(arr[i]);
-        else for(unsigned long j = 0; j < workload_sz_2; j++)EXPECT_EQ(i, arr[i]->Read(j));
-    }
-    for(int i = 0; i<loop_times; i++){
-        if(i %2 == 0)mma->Release(arr[i]);
-    }
+        std::vector<proj3::ArrayList*>arr;
+        for(int i = 0; i<loop_times; i++){
+            arr.push_back(mma->Allocate(workload_sz_2));
+            for(unsigned long j = 0; j < workload_sz_2; j++)arr[i]->Write(j, i);
+        }
+        for(int i = 0; i<loop_times; i++){
+            if(i %2)mma->Release(arr[i]);
+            else for(unsigned long j = 0; j < workload_sz_2; j++)EXPECT_EQ(i, arr[i]->Read(j));
+        }
+        for(int i = 0; i<loop_times; i++){
+            if(i %2 == 0)mma->Release(arr[i]);
+        }
 }
 
 TEST_F(MMATest,task3){

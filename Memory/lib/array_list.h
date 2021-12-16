@@ -19,6 +19,7 @@ namespace proj3 {
         // you should not modify the public interfaces used in tests
         int Read (unsigned long);
         void Write (unsigned long, int);
+        int Get_array_id();
     };
 
 } // namespce: proj3

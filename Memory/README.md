@@ -50,11 +50,11 @@ Implement a clock algorithm (approximate LRU) for page replacement instead of yo
 
 ## Q3
 
-Change the `mma` memory allocation from 1 to 10 and re-run test 2 for both algorithms.  Observe and record the time it costs to pass the tests. Analyze the reason for the result variation and the differences between the two algorithms.
+Vary the `mma` memory allocation from 1 to 10 (1,2,...,10) and re-run test 2 for both algorithms.  Observe and record the time it costs to pass the tests. Analyze the reason for the result variation and the differences between the two algorithms.
 
 ## Q4
 
-Implement your `mma` to support multi-thread scenarios while guaranteeing thread safety.  The page replacement algorithm should be the clock algorithm. Vary the thread number from  10 to 20 to pass the 4th test. What can you observe? Try to analyze the results. 
+Implement your `mma` to support multi-thread scenarios while guaranteeing thread safety.  The page replacement algorithm should be the clock algorithm. Vary the thread number from 10 to 20 to pass the 4th test. What can you observe? Try to analyze the results. Pack your PDF and diff files as a zip for submission.
 
 ## Grading
 

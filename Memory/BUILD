@@ -10,9 +10,77 @@ cc_test(
         "//lib:memory_manager_lib",
         ],
     copts = [
-        "-std=c++11",
+        "-std=c++17",
     ],
     linkopts = [
         "-pthread",
     ]
+)
+
+cc_binary(
+    name = "q1",
+    srcs = [
+        "q1.cc"
+            ],
+    deps = [
+        "//lib:utils_lib",
+        "//lib:memory_manager_lib",
+    ],
+    linkopts = [
+        "-lpthread"
+    ],
+    copts = [
+        "-std=c++17",
+    ],
+)
+
+cc_binary(
+    name = "q2",
+    srcs = [
+        "q2.cc"
+            ],
+    deps = [
+        "//lib:utils_lib",
+        "//lib:memory_manager_lib",
+    ],
+    linkopts = [
+        "-lpthread"
+    ],
+    copts = [
+        "-std=c++17",
+    ],
+)
+
+cc_binary(
+    name = "q3",
+    srcs = [
+        "q3.cc"
+            ],
+    deps = [
+        "//lib:utils_lib",
+        "//lib:memory_manager_lib",
+    ],
+    linkopts = [
+        "-lpthread"
+    ],
+    copts = [
+        "-std=c++17",
+    ],
+)
+
+cc_binary(
+    name = "q4",
+    srcs = [
+        "q4.cc"
+            ],
+    deps = [
+        "//lib:utils_lib",
+        "//lib:memory_manager_lib",
+    ],
+    linkopts = [
+        "-lpthread"
+    ],
+    copts = [
+        "-std=c++17",
+    ],
 )
