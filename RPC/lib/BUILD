@@ -5,10 +5,12 @@ cc_library(
     srcs = [
         "mma_client.cc",
         "array_list.cc",
+        "memory_manager.cc",
     ],
     hdrs = [
         "mma_client.h",
         "array_list.h",
+        "memory_manager.h",
         ],
     defines = ["BAZEL_BUILD"],
     deps = [
@@ -23,10 +25,14 @@ cc_library(
     srcs = [
         "mma_server.cc",
         "memory_manager.cc",
+        "array_list.cc",
+        "mma_client.cc",
     ],
     hdrs = [
         "mma_server.h",
         "memory_manager.h",
+        "array_list.h",
+        "mma_client.h",
         ],
     defines = ["BAZEL_BUILD"],
     deps = [

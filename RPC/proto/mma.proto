@@ -5,3 +5,27 @@ option objc_class_prefix = "MMA";
 package mma;
 
 // define your service here
+service Memory_Manage {
+    // send a memory manage request
+    rpc Serve_request (MemoryRequest) returns (MemoryReply) {}
+}
+
+// Request Message containing all request arguments
+message MemoryRequest {
+    enum Operation {
+        ALLOCATE = 0;
+        READ = 1;
+        WRITE = 2;
+        FREE = 3;
+    }
+    Operation op_typ = 1;
+    int32 array_id = 2;
+    int32 virtual_page_id = 3;
+    int32 offset = 4;
+    optional int32 value = 5;
+}
+
+// Request Message containing all returning messages
+message MemoryReply {
+    int32 value = 1;
+}
